@@ -10,6 +10,15 @@ public class Store
 	private List<ProductStore> products;
 	private List<Operation> operations;
 
+	public Store(Integer idStore, String nombreTienda, List<ProductStore> products, List<Operation> operations)
+	{
+		super();
+		this.idStore = idStore;
+		this.nombreTienda = nombreTienda;
+		this.products = products;
+		this.operations = operations;
+	}
+
 	public Integer getIdStore()
 	{
 		return idStore;
@@ -49,20 +58,20 @@ public class Store
 	{
 		this.operations = operations;
 	}
-	
+
 	public boolean validateStock(Product product, Integer quantity)
 	{
 		return false;
 	}
-	
+
 	public Product reduceProduct(Product product, Integer quantity)
 	{
 		return null;
 	}
-	
+
 	public void addOperation(ShoppingCart car)
 	{
-		
+
 	}
-	
+
 }

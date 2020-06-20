@@ -1,20 +1,29 @@
 package com.csandoval.main;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import com.csandoval.model.Store;
+import com.csandoval.model.ProductStore;
 
 public class ProgramaBonus
 {
-
-	public Store store = new Store();
-
+	
+	public static List<ProductStore> pStore;
+	
 	public static void main(String[] args)
 	{
 		boolean logout = true;
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("========== BIENVENIDOS A LA VETERINARIA SOCIALPET ==========");
+		loadProducts();
+		
+		/*System.out.println("========== BIENVENIDOS A LA VETERINARIA SOCIALPET ==========");
 		
 		while (logout)
 		{			
@@ -44,17 +53,34 @@ public class ProgramaBonus
 				default:
 					break;
 			}
-		}
+		}*/
 		
 	}
 
 	public static void initStore()
 	{
-
+		
 	}
 
 	public static void loadProducts()
 	{
-
+		Stream<String> productos = null;
+		pStore = new ArrayList<>();
+		
+		try
+		{
+			productos = Files.lines(Paths.get("src/main/resources/productos-tienda.txt"));
+			
+			pStore = productos.map(linea -> linea.split(",")) //Stream<String[]>
+							 .map(ProductStore::new) //Stream<Producto>;
+							 .collect(Collectors.toList()); //List<ProductStore>
+			
+			pStore.forEach(System.out::println);
+			
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 }

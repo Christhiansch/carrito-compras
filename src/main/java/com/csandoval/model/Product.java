@@ -8,6 +8,11 @@ public abstract class Product
 	private Category category;
 	private Double buyPrice;
 	private Double salePrice;	
+	
+	public Product()
+	{
+		
+	}
 
 	public Product(Integer idProduct, String name, Category category, Double buyPrice, Double salePrice)
 	{
