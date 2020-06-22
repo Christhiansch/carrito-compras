@@ -47,4 +47,13 @@ public class ProductStore extends Product
 		this.stockMin = stockMin;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "ProductStore [stock=" + stock + ", stockMin=" + stockMin + ", " + super.toString() + "]";
+	}
+
+	
+	
+
 }
